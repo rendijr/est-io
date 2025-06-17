@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Selamat Ulang Tahun, Est!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top right, #fff0f5, #e0c3fc);
+      overflow: hidden;
+      font-family: 'Comic Sans MS', cursive;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ff69b4;
+      font-size: 3em;
+      margin-top: 60px;
+      animation: bounce 2s infinite;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #8e44ad;
+      font-size: 1.3em;
+      margin: 20px auto;
+      max-width: 600px;
+      padding: 10px;
+      animation: fadein 3s ease-in-out;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+      box-shadow: 0 0 10px #fcdfff;
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 80px;
+      height: 100px;
+      background: pink;
+      border-radius: 50%;
+      animation: float 6s infinite ease-in-out;
+    }
+
+    .balloon::after {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: 50px;
+      background: #555;
+      left: 50%;
+      top: 100%;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: gold;
+      animation: confettiFall 5s linear infinite;
+    }
+
+    .rainbow {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 150px;
+      background: radial-gradient(circle at top center, #ff69b4, #ffcc00, #87cefa, #dda0dd);
+      border-radius: 50% 50% 0 0;
+      z-index: -1;
+      opacity: 0.5;
+    }
+
+    .cupcake {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: url('https://emojicdn.elk.sh/🧁') no-repeat center center / contain;
+      animation: cupcakeFloat 6s infinite ease-in-out;
+    }
+
+    @keyframes cupcakeFloat {
+      0% { top: 100%; left: 20%; opacity: 1; }
+      50% { top: 50%; left: 25%; }
+      100% { top: -20px; left: 30%; opacity: 0; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-300px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes confettiFall {
+      0% {
+        top: -10px;
+        left: calc(100% * var(--i));
+        opacity: 1;
+        transform: rotate(0deg);
+      }
+      100% {
+        top: 100%;
+        left: calc(100% * var(--i) + 20px);
+        opacity: 0;
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    button {
+      display: block;
+      margin: 30px auto;
+      padding: 10px 20px;
+      font-size: 1em;
+      color: white;
+      background-color: #f08080;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px #c06;
+    }
+
+    .hug-message {
+      display: none;
+      text-align: center;
+      font-size: 1.2em;
+      margin-top: 20px;
+      color: #d63384;
+      animation: fadein 2s ease-in;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="rainbow"></div>
+
+  <h1>🎉 Selamat Ulang Tahun, Est! 🎂</h1>
+
+  <div class="subtitle">
+    Hai Est, selamat bertambah umur yaa!<br><br>
+    Dari io, temen deketmu yang udah saling bagi rahasia, cerita, dan tawa receh yang cuma kita berdua yang ngerti 😆💕  
+    <br><br>
+    Semoga hidupmu penuh warna kayak confetti ini, dan hatimu selalu hangat kayak pelukan yang belum dikasih tapi diniatkan 😜  
+    <br><br>
+    Terima kasih udah jadi Est-ku. Nggak semua orang bisa denger cerita-cerita absurd io, tapi kamu bisa — dan itu keren.  
+    <br><br>
+    Have a super sweet birthday, Est! Makan kue yang banyak, dan jangan lupa senyum manisnya dijaga. 😘🎈  
+    <br><br>
+    🎀 Love you from io 🧁
+  </div>
+
+  <button onclick="showHug()">🤗 Peluk Virtual dari io!</button>
+  <div class="hug-message" id="hugMessage">*Io memeluk Est erat-erat sambil bisik: “makasih udah selalu ada yaa 😌💗”*</div>
+
+  <!-- Balon -->
+  <div class="balloon" style="left: 15%; background: #ffb6c1; animation-delay: 0s;"></div>
+  <div class="balloon" style="left: 35%; background: #dda0dd; animation-delay: 1s;"></div>
+  <div class="balloon" style="left: 55%; background: #ffc0cb; animation-delay: 2s;"></div>
+  <div class="balloon" style="left: 75%; background: #e6b0aa; animation-delay: 3s;"></div>
+
+  <!-- Cupcake terbang -->
+  <div class="cupcake" style="left: 20%; animation-delay: 0s;"></div>
+  <div class="cupcake" style="left: 50%; animation-delay: 2s;"></div>
+  <div class="cupcake" style="left: 70%; animation-delay: 4s;"></div>
+
+  <!-- Confetti -->
+  <script>
+    function showHug() {
+      document.getElementById('hugMessage').style.display = 'block';
+    }
+
+    for (let i = 0; i < 60; i++) {
+      const confetti = document.createElement("div");
+      confetti.className = "confetti";
+      confetti.style.setProperty('--i', Math.random());
+      confetti.style.background = ['#ff69b4', '#ffcc00', '#87cefa', '#dda0dd'][i % 4];
+      confetti.style.left = `${Math.random() * 100}%`;
+      confetti.style.animationDuration = `${3 + Math.random() * 3}s`;
+      confetti.style.opacity = 0.7;
+      document.body.appendChild(confetti);
+    }
+  </script>
+
+  <!-- Musik Latar -->
+  <audio id="musik" autoplay loop>
+    <source src="happy.mp3" type="audio/mpeg">
+    Browser kamu nggak mendukung audio.
+  </audio>
+  <button onclick="document.getElementById('musik').play()">▶️ Putar Musik</button>
+
+</body>
+</html>
